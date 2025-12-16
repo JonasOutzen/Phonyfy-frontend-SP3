@@ -7,18 +7,26 @@ const formatDuration = (seconds) => {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 };
 
-export default function Songs({ songs }) {
+export default function Songs({ songs, artists = [] }) {
+  const artistNameFromId = (artistId) => {
+    const id = Number(artistId);
+    return (
+      artists.find((artist) => Number(artist.id) === id)?.name ??
+      "Unknown Artist"
+    );
+  };
+
   return (
     <div>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
-            <th>Id</th>
+            <th>#</th>
             <th>Title</th>
             <th>Album Name</th>
-            <th>Duration</th>
             <th>Artist</th>
             <th>Featuring Artists</th>
+            <th>Duration</th>
           </tr>
         </thead>
         <tbody className={styles.tbody}>
@@ -27,9 +35,9 @@ export default function Songs({ songs }) {
               <td>{song.id}</td>
               <td>{song.songname}</td>
               <td>{song.albumname}</td>
+              <td>{artistNameFromId(song.artist)}</td>
+              <td>{(song.featuringArtists ?? []).map(artistNameFromId).join(", ")}</td>
               <td>{formatDuration(song.duration)}</td>
-              <td>{song.artist}</td>
-              <td>{song.featuringArtists.join(", ")}</td>
             </tr>
           ))}
         </tbody>

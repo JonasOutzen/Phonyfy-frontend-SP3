@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./pages/layout/App.jsx";
 import Home from "./pages/homepage/Home.jsx";
 import GlobalTop50 from "./pages/global-top-50/GlobalTop50.jsx";
-import Songs from "./components/songs/SongList.jsx";
+import Songs from "./pages/songs/Songs.jsx";
 import "./index.css";
 
 

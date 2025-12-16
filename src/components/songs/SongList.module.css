@@ -1,36 +1,211 @@
-/* Table Styling */
+/* SongList.module.css */
+
+/* Spotify-ish: dark UI + accent gradient */
 .table {
   width: 100%;
-  border-collapse: collapse;
-  background: var(--bg-primary);
-  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #eaeaea;
+
+  /* IMPORTANT: makes column widths consistent with headers */
+  table-layout: fixed;
+
+  /* Card look */
+  border-radius: 16px;
   overflow: hidden;
+
+
+
+  /* Heavy shadows */
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.65),
+    0 2px 0 rgba(255, 255, 255, 0.03) inset,
+    0 -2px 0 rgba(0, 0, 0, 0.35) inset;
+
+  /* Slight border for contrast */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* Make it feel like a Spotify list area */
+  backdrop-filter: blur(6px);
 }
 
 .thead {
-  background-color: var(--header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  background: linear-gradient(
+    180deg,
+    rgba(35, 35, 35, 0.92),
+    rgba(22, 22, 22, 0.78)
+  );
+
+  /* header shadow like Spotify when scrolling */
+  box-shadow: 0 10px 30px rgba(101, 22, 22, 0.2);
+  backdrop-filter: blur(8px);
 }
 
 .thead th {
-  color: var(--header-text);
-  padding: 12px;
-  font-size: 1.1rem;
   text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
-.tbody tr:nth-child(even) {
-  background-color: var(--bg-secondary);
+/* Body rows */
+.tbody tr {
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
 }
 
+/* Borders between each song */
 .tbody tr td {
-  padding: 12px;
-  border-bottom: 1px solid var(--border-color);
-  font-size: 1rem;
-  color: var(--text-primary);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Prevent long text breaking layout */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Hover effect */
+/* ===== COLUMN WIDTHS & ALIGNMENT (fix labels placement) ===== */
+
+/* # column */
+.thead th:nth-child(1),
+.tbody td:nth-child(1) {
+  width: 56px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Title */
+.thead th:nth-child(2),
+.tbody td:nth-child(2) {
+  width: 28%;
+}
+.tbody td:nth-child(2) {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Album */
+.thead th:nth-child(3),
+.tbody td:nth-child(3) {
+  width: 22%;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Duration */
+.thead th:nth-child(4),
+.tbody td:nth-child(4) {
+  width: 90px;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Artist */
+.thead th:nth-child(5),
+.tbody td:nth-child(5) {
+  width: 18%;
+}
+
+/* Featuring */
+.thead th:nth-child(6),
+.tbody td:nth-child(6) {
+  width: auto;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Hover: highlight row + subtle lift */
 .tbody tr:hover {
-  background-color: var(--hover-bg);
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+/* Active/clicked feel */
+.tbody tr:active {
+  transform: translateY(0px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Optional: alternating rows (very subtle) */
+.tbody tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive: allow horizontal scroll on small screens */
+@media (max-width: 760px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* On small screens, let columns breathe */
+  .thead th,
+  .tbody td {
+    min-width: 140px;
+  }
+
+  .thead th:nth-child(1),
+  .tbody td:nth-child(1) {
+    min-width: 56px;
+  }
+
+  .thead th:nth-child(4),
+  .tbody td:nth-child(4) {
+    min-width: 90px;
+  }
+  
+}
+
+/* ===== FORCE ALIGNMENT PER COLUMN (fix header vs content mismatch) ===== */
+
+/* Default: all cells left */
+.tbody td {
+  text-align: left !important;
+}
+
+/* # column centered */
+.thead th:nth-child(1),
+.tbody td:nth-child(1) {
+  text-align: center !important;
+}
+
+/* Title left */
+.thead th:nth-child(2),
+.tbody td:nth-child(2) {
+  text-align: left !important;
+}
+
+/* Album left */
+.thead th:nth-child(3),
+.tbody td:nth-child(3) {
+  text-align: left !important;
+}
+
+/* Duration left */
+.thead th:nth-child(4),
+.tbody td:nth-child(4) {
+  text-align: left !important;
+}
+
+/* Artist left */
+.thead th:nth-child(5),
+.tbody td:nth-child(5) {
+  text-align: left !important;
+}
+
+/* Featuring left */
+.thead th:nth-child(6),
+.tbody td:nth-child(6) {
+  text-align: right !important;
 }

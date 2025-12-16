@@ -19,7 +19,7 @@ body {
 /* Light Theme (default) */
 body.light {
   --bg-primary: #ffffff;
-  --bg-secondary: #f9f9f9;
+  --bg-secondary: #ffffff;
   --text-primary: #213547;
   --text-secondary: #666666;
   --border-color: #dddddd;
