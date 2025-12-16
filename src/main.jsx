@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./pages/layout/App.jsx";
 import Home from "./pages/homepage/Home.jsx";
 import GlobalTop50 from "./pages/global-top-50/GlobalTop50.jsx";
+import Songs from "./components/songs/SongList.jsx";
 import "./index.css";
 
 
@@ -14,7 +15,7 @@ ReactDOM.createRoot(root).render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="songs" element={<div><h1>Songs Page</h1></div>} />
+        <Route path="songs" element={<Songs />} />
         <Route path="artists" element={<div><h1>Artists Page</h1></div>} />
         <Route path="globaltop50" element={<GlobalTop50 />} />
       </Route>
