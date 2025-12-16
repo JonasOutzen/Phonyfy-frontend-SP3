@@ -1,0 +1,36 @@
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-primary);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.thead {
+  background-color: var(--header-bg);
+}
+
+.thead th {
+  color: var(--header-text);
+  padding: 12px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.tbody tr:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+
+.tbody tr td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* Hover effect */
+.tbody tr:hover {
+  background-color: var(--hover-bg);
+  cursor: pointer;
+}
