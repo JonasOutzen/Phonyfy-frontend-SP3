@@ -1,0 +1,6 @@
+.container {
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping to new lines */
+  gap: 20px; /* space between cards */
+  justify-content: center; /* center cards horizontally */
+}
