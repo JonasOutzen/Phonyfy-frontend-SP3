@@ -1,11 +1,8 @@
 import React from "react";
 import styles from "./SongList.module.css";
+import { Link } from "react-router";
+import { formatDuration } from "../../utils/playlistUtils";
 
-const formatDuration = (seconds) => {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-};
 
 export default function Songs({ songs, artists = [] }) {
   const artistNameFromId = (artistId) => {
@@ -30,13 +27,22 @@ export default function Songs({ songs, artists = [] }) {
           </tr>
         </thead>
         <tbody className={styles.tbody}>
-          {songs.map((song) => (
+          {songs.map((song, index) => (
             <tr key={song.id}>
-              <td>{song.id}</td>
+              <td>{index + 1}</td>
               <td>{song.songname}</td>
               <td>{song.albumname}</td>
-              <td>{artistNameFromId(song.artist)}</td>
-              <td>{(song.featuringArtists ?? []).map(artistNameFromId).join(", ")}</td>
+              <td>
+                <Link className={styles.artistLink} to={`/artist/${song.artist}`}>
+                  {artistNameFromId(song.artist)}
+                </Link>
+              </td>
+
+              <td>
+                <Link className={styles.artistLink} to={`/artist/${song.featuringArtists}`}>
+                  {(song.featuringArtists ?? []).map(artistNameFromId).join(", ")}
+                </Link>
+              </td>
               <td>{formatDuration(song.duration)}</td>
             </tr>
           ))}

@@ -1,0 +1,93 @@
+.container {
+  margin-top: 100px; /* Prevent header overlap */
+  padding: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-primary);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.thead {
+  background-color: var(--header-bg);
+}
+
+.thead th {
+  color: var(--header-text);
+  padding: 12px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.tbody tr:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+
+.tbody tr td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.tbody tr:hover {
+  background-color: var(--hover-bg);
+  cursor: pointer;
+}
+
+.cover {
+  width: 220px;        /* control size */
+  height: 220px;       /* keep it square */
+  object-fit: cover;   /* crop nicely */
+  border-radius: 12px;
+
+  /* depth */
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.6);
+
+  margin-bottom: 0;
+}
+
+.titlecard {
+  padding: 60px;
+  display: flex;
+  align-items: flex-end; /* Spotify-like */
+  gap: 1.5rem;
+  margin-bottom: 0;
+}
+
+.titlecardText {
+  text-align: left;
+}
+
+.title {
+  text-align: left;
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-top: 0;
+}
+
+.smallText {
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}

@@ -211,7 +211,8 @@
     { "id": 199, "songname": "Anti-Hero", "albumname": "Midnights", "duration": 200, "artist": 10, "featuringArtists": [] },
     { "id": 200, "songname": "Lavender Haze", "albumname": "Midnights", "duration": 202, "artist": 10, "featuringArtists": [] }
   ],
-"artists": [
+
+  "artists": [
     {
       "id": 1,
       "name": "Juice WRLD",
@@ -311,6 +312,29 @@
       "genre": "Pop/Country",
       "topSongs": [181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200],
       "img": "/images/artists/taylor-swift.jpg"
+    }
+  ],
+
+  "playlists": [
+    {
+      "playlistId": 1,
+      "name": "Global Top 50",
+      "description": "Top 50 playlist generated from the provided songs dataset.",
+      "coverColor": "red",
+      "img": "/images/albums/globaltop50.jpg",
+      "songIds": 
+      [
+        63, 1, 121, 83, 22,
+        161, 45, 102, 74, 187,
+        29, 142, 84, 9, 171,
+        64, 125, 41, 112, 191,
+        2, 87, 162, 76, 33,
+        146, 5, 181, 105, 59,
+        122, 163, 85, 189, 47,
+        8, 143, 61, 124, 172,
+        101, 182, 21, 160, 60,
+        103, 32, 141, 45, 81
+      ]
     }
   ]
 }

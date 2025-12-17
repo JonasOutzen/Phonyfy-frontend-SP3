@@ -14,8 +14,6 @@
   border-radius: 16px;
   overflow: hidden;
 
-
-
   /* Heavy shadows */
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.65),
     0 2px 0 rgba(255, 255, 255, 0.03) inset,
@@ -115,6 +113,16 @@
   width: 18%;
 }
 
+/* Underlining the artists when hovering and removing normal link-color */
+.tbody .artistLink {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tbody .artistLink:hover{
+  text-decoration: underline;
+}
+
 /* Featuring */
 .thead th:nth-child(6),
 .tbody td:nth-child(6) {
@@ -139,32 +147,6 @@
 /* Optional: alternating rows (very subtle) */
 .tbody tr:nth-child(even) td {
   background: rgba(0, 0, 0, 0.06);
-}
-
-/* Responsive: allow horizontal scroll on small screens */
-@media (max-width: 760px) {
-  .table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  /* On small screens, let columns breathe */
-  .thead th,
-  .tbody td {
-    min-width: 140px;
-  }
-
-  .thead th:nth-child(1),
-  .tbody td:nth-child(1) {
-    min-width: 56px;
-  }
-
-  .thead th:nth-child(4),
-  .tbody td:nth-child(4) {
-    min-width: 90px;
-  }
-  
 }
 
 /* ===== FORCE ALIGNMENT PER COLUMN (fix header vs content mismatch) ===== */

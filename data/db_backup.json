@@ -211,14 +211,17 @@
     { "id": 199, "songname": "Anti-Hero", "albumname": "Midnights", "duration": 200, "artist": 10, "featuringArtists": [] },
     { "id": 200, "songname": "Lavender Haze", "albumname": "Midnights", "duration": 202, "artist": 10, "featuringArtists": [] }
   ],
-"artists": [
+
+  "artists": [
     {
       "id": 1,
       "name": "Juice WRLD",
       "age": 21,
       "listeners": 32000000,
       "description": "Emo-rap og melodisk hip-hop med fokus på mentale temaer.",
-      "topSongs": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+      "genre": "Hip-hop/Rap",
+      "topSongs": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+      "img": "/images/artists/juice-wrld.jpg"
     },
     {
       "id": 2,
@@ -226,7 +229,9 @@
       "age": 28,
       "listeners": 41000000,
       "description": "Alternativ rock og nu-metal med elektroniske elementer.",
-      "topSongs": [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
+      "genre": "Rock/Metal",
+      "topSongs": [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],
+      "img": "/images/artists/linkin-park.jpg"
     },
     {
       "id": 3,
@@ -234,7 +239,9 @@
       "age": 30,
       "listeners": 8700000,
       "description": "Dansk metalrock med rockabilly- og heavy metal-inspiration.",
-      "topSongs": [41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60]
+      "genre": "Metal",
+      "topSongs": [41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60],
+      "img": "/images/artists/volbeat.jpg"
     },
     {
       "id": 4,
@@ -242,7 +249,9 @@
       "age": 51,
       "listeners": 73000000,
       "description": "Verdenskendt rapper kendt for tekniske lyrik og storytelling.",
-      "topSongs": [61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80]
+      "genre": "Hip-hop/Rap",
+      "topSongs": [61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80],
+      "img": "/images/artists/eminem.jpg"
     },
     {
       "id": 5,
@@ -250,7 +259,9 @@
       "age": 47,
       "listeners": 62000000,
       "description": "Innovativ hip-hop kunstner og producer med stor kulturel indflydelse.",
-      "topSongs": [81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100]
+      "genre": "Hip-hop/Rap",
+      "topSongs": [81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100],
+      "img": "/images/artists/kanye-west.jpg"
     },
     {
       "id": 6,
@@ -258,7 +269,9 @@
       "age": 38,
       "listeners": 82000000,
       "description": "Hip-hop og R&B superstjerne med global mainstream appeal.",
-      "topSongs": [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120]
+      "genre": "Hip-hop/R&B",
+      "topSongs": [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120],
+      "img": "/images/artists/drake.jpg"
     },
     {
       "id": 7,
@@ -266,15 +279,19 @@
       "age": 29,
       "listeners": 68000000,
       "description": "Pop-rap artist med rock- og alternative vibes.",
-      "topSongs": [121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140]
+      "genre": "Pop/Rap",
+      "topSongs": [121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140],
+      "img": "/images/artists/post-malone.jpg"
     },
-    {
+    {   
       "id": 8,
       "name": "Tory Lanez",
       "age": 32,
       "listeners": 14000000,
       "description": "R&B og rap med fokus på melodier og versatility.",
-      "topSongs": [141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160]
+      "genre": "R&B/Rap",
+      "topSongs": [141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160],
+      "img": "/images/artists/tory-lanez.jpg"
     },
     {
       "id": 9,
@@ -282,7 +299,9 @@
       "age": 37,
       "listeners": 27000000,
       "description": "Eksperimenterende R&B og soul med kunstnerisk dybde.",
-      "topSongs": [161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180]
+      "genre": "R&B/Soul",
+      "topSongs": [161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180],
+      "img": "/images/artists/frank-ocean.jpg"
     },
     {
       "id": 10,
@@ -290,7 +309,34 @@
       "age": 35,
       "listeners": 98000000,
       "description": "Singer-songwriter med succes inden for country, pop og indie.",
-      "topSongs": [181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200]
+      "genre": "Pop/Country",
+      "topSongs": [181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200],
+      "img": "/images/artists/taylor-swift.jpg"
+    }
+  ],
+
+  "playlists": [
+    {
+      "playlistId": 1,
+      "name": "Global Top 50",
+      "description": "Top 50 playlist generated from the provided songs dataset.",
+      "coverColor": "red",
+      "img": "/images/albums/globaltop50.jpg",
+      "songIds": 
+      [
+        63, 1, 121, 83, 22,
+        161, 45, 102, 74, 187,
+        29, 142, 84, 9, 171,
+        64, 125, 41, 112, 191,
+        2, 87, 162, 76, 33,
+        146, 5, 181, 105, 59,
+        122, 163, 85, 189, 47,
+        8, 143, 61, 124, 172,
+        101, 182, 21, 160, 60,
+        103, 32, 141, 45, 81
+      ]
     }
   ]
 }
+
+
