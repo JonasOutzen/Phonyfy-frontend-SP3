@@ -1,0 +1,23 @@
+/* src/pages/driverdetail/DriverDetail.module.css */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.backButton {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.detailCard {
+  background: var(--bg-primary);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+}
+.detailCard h1 { color: var(--text-primary); }
+.detailCard p { color: var(--text-primary); margin: 6px 0; }
