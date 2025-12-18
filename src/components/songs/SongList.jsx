@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SongList.module.css";
 import { Link } from "react-router";
-import { formatDuration } from "../../utils/playlistUtils";
+import { formatDuration } from "../../utils/playlistUtils.js";
 
 
 export default function Songs({ songs, artists = [] }) {
