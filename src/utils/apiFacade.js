@@ -1,9 +1,10 @@
 const BASE_URL = "http://localhost:7070/api";
 const LOGIN_ENDPOINT = "/auth/login";
+const REGISTER_ENDPOINT = "/auth/register";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
-    return Promise.reject({ status: res.status, fullError: res.json() });
+    return res.json().then((data) => Promise.reject({ status: res.status, body: data }));
   }
   return res.json();
 }
@@ -11,6 +12,18 @@ function handleHttpErrors(res) {
 /* Insert utility-methods from later steps 
 here (REMEMBER to uncomment in the returned 
 object when you do)*/
+
+const register = (username, password) => {
+  const options = makeOptions("POST", false, { username, password });
+  return fetch(BASE_URL + REGISTER_ENDPOINT, options)
+    .then(handleHttpErrors) // expects json back
+    .then((res) => {
+      // backend returns token + username on register :contentReference[oaicite:4]{index=4}
+      setToken(res.token);           // optional: auto-login after register
+      return res;
+    });
+};
+
 
 const setToken = (token) => {
   localStorage.setItem("jwtToken", token);
@@ -38,9 +51,7 @@ const login = (user, password) => {
     .then(handleHttpErrors)
     .then((res) => {
       setToken(res.token);
-    })
-    .catch((err) => {
-      console.log(err);
+      return res;
     });
 };
 
@@ -92,7 +103,8 @@ const facade = {
   logout,
   fetchData,
   getUserNameAndRoles,
-  hasUserAccess
+  hasUserAccess,
+  register,
 };
 
 export default facade;

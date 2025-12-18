@@ -20,9 +20,9 @@ export default function GlobalTop50() {
 
   /* Filtering the top 50 playlist */
   const top50 = playlists.find((p) => p.playlistId === 1);
-  const songById = new Map(songs.map((s) => [s.id, s]));
+  const songById = new Map(songs.map((s) => [String(s.id), s]));
   const top50songs = (top50?.songIds ?? [])
-    .map((id) => songById.get(id))
+    .map((id) => songById.get(String(id)))
     .filter(Boolean);
 
   const totalSeconds = getTotalSeconds(top50songs);
