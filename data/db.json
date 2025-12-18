@@ -321,7 +321,6 @@
       "name": "Global Top 50",
       "description": "Top 50 playlist generated from the provided songs dataset.",
       "coverColor": "red",
-      "img": "/images/albums/globaltop50.jpg",
       "songIds": 
       [
         63, 1, 121, 83, 22,
@@ -334,7 +333,8 @@
         8, 143, 61, 124, 172,
         101, 182, 21, 160, 60,
         103, 32, 141, 45, 81
-      ]
+      ],
+      "img": "/images/albums/globaltop50.jpg"
     }
   ]
 }
