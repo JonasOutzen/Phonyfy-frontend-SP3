@@ -1,15 +1,17 @@
 .homeContainer {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: var(--text-primary);
   padding-bottom: 40px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px 20px;
 }
 
 .heading {
   font-size: 3rem;
   font-weight: 700;
   margin: 0 0 10px 0;
-  color: white;
+  color: aliceblue;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -18,64 +20,92 @@
   font-weight: 300;
   margin: 0;
   opacity: 0.95;
-  color: white;
+  color: aliceblue;
 }
 
-.contentSection {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 60px 20px;
-  max-width: 1200px;
+.section {
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.card {
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: aliceblue;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Artist Grid - using the same grid pattern as Artists page */
+.artistGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Playlist Grid */
+.playlistGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.playlistCard {
   background: var(--bg-primary);
   border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 8px 16px var(--card-shadow);
+  padding: 20px;
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px var(--card-shadow);
 }
 
-.card:hover {
+.playlistCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px var(--card-shadow);
+  box-shadow: 0 8px 16px var(--card-shadow);
 }
 
-.card h2 {
-  font-size: 1.5rem;
-  margin-top: 0;
-  color: #667eea;
-  border-bottom: 3px solid #667eea;
-  padding-bottom: 10px;
+.playlistImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-.card p {
-  line-height: 1.6;
+.playlistInfo {
+  text-align: center;
+}
+
+.playlistName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
   color: var(--text-primary);
-  font-size: 1rem;
 }
 
-.card ul {
-  list-style: none;
-  padding: 0;
+.playlistDescription {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
   margin: 0;
 }
 
-.card li {
-  padding: 8px 0;
-  padding-left: 25px;
-  position: relative;
-  color: var(--text-primary);
-  line-height: 1.6;
-}
+/* Responsive design */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
 
-.card li:before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: bold;
-  font-size: 1.2rem;
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .artistGrid,
+  .playlistGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 }
