@@ -91,6 +91,15 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
+.songTitle {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.songTitle:hover {
+  color: #1db954;
+}
+
 /* Album */
 .thead th:nth-child(3),
 .tbody td:nth-child(3) {
@@ -190,4 +199,38 @@
 .thead th:nth-child(6),
 .tbody td:nth-child(6) {
   text-align: right !important;
+}
+
+/* Play button column */
+.thead th:nth-child(7),
+.tbody td:nth-child(7) {
+  width: 80px;
+  text-align: center !important;
+}
+
+.playButton {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+  margin: 0 auto;
+}
+
+.playButton:hover {
+  background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(29, 185, 84, 0.5);
+}
+
+.playButton:active {
+  transform: scale(0.95);
 }
