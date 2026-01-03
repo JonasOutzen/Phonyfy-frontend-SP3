@@ -1,4 +1,4 @@
-export const getTotalSeconds = (songs = []) =>
+ export const getTotalSeconds = (songs = []) =>
   songs.reduce((sum, song) => sum + (Number(song?.duration) || 0), 0);
 
 export const formatHoursMinutes = (totalSeconds = 0) => {

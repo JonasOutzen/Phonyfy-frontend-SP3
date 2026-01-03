@@ -1,13 +1,22 @@
 const BASE_URL = "http://localhost:7070/api";
 const LOGIN_ENDPOINT = "/auth/login";
 const REGISTER_ENDPOINT = "/auth/register";
+const SONGS_ENDPOINT = "/songs";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
-    return res.json().then((data) => Promise.reject({ status: res.status, body: data }));
+    return res
+      .json()
+      .catch(() => ({}))
+      .then((data) => Promise.reject({ status: res.status, body: data }));
   }
-  return res.json();
+
+  // 204 No Content
+  if (res.status === 204) return null;
+
+  return res.json().catch(() => null);
 }
+
 
 /* Insert utility-methods from later steps 
 here (REMEMBER to uncomment in the returned 
@@ -89,10 +98,62 @@ function getUserNameAndRoles(){
   } else return ""
 }
 
-const hasUserAccess = (neededRole, loggedIn) => {
-  const roles = getUserNameAndRoles().split(',')
-  return loggedIn && roles.includes(neededRole)
-}
+const hasUserAccess = (neededRole) => {
+  const token = getToken();
+  if (!token) return false;
+
+  const [, roles] = getUserNameAndRoles(); 
+  const roleArr = Array.isArray(roles) ? roles : String(roles).split(",");
+
+  return roleArr.includes(neededRole);
+};
+
+const PLAYLISTS_ENDPOINT = "/playlists";
+
+const getMyPlaylists = () => {
+  const options = makeOptions("GET", true);
+
+  console.log("jwtToken in LS:", getToken());
+  console.log("Request headers:", options.headers);
+
+  return fetch(BASE_URL + PLAYLISTS_ENDPOINT + "/me", options).then(handleHttpErrors);
+};
+
+const createPlaylist = ({ name, description, img }) => {
+  const options = makeOptions("POST", true, { name, description, img });
+  return fetch(BASE_URL + PLAYLISTS_ENDPOINT, options).then(handleHttpErrors);
+};
+
+const getPlaylistById = (playlistId) => {
+  const options = makeOptions("GET", true);
+  return fetch(BASE_URL + PLAYLISTS_ENDPOINT + `/${playlistId}`, options).then(handleHttpErrors);
+};
+
+const addSongToPlaylist = (playlistId, songId) => {
+  const options = makeOptions("POST", true, { songId });
+  return fetch(BASE_URL + PLAYLISTS_ENDPOINT + `/${playlistId}/songs`, options).then(handleHttpErrors);
+};
+
+const removeSongFromPlaylist = (playlistId, songId) => {
+  const options = makeOptions("DELETE", true);
+  return fetch(BASE_URL + PLAYLISTS_ENDPOINT + `/${playlistId}/songs/${songId}`, options).then(handleHttpErrors);
+};
+
+const deletePlaylist = (playlistId) => {
+  const options = makeOptions("DELETE", true);
+  return fetch(BASE_URL + PLAYLISTS_ENDPOINT + `/${playlistId}`, options).then(handleHttpErrors);
+};
+
+const getSongsAndArtists = async () => {
+  const res = await fetch("/data/db.json");
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    return Promise.reject({ status: res.status, body });
+  }
+  const data = await res.json();
+  return { songs: data.songs ?? [], artists: data.artists ?? [] };
+};
+
 
 const facade = {
   makeOptions,
@@ -105,6 +166,15 @@ const facade = {
   getUserNameAndRoles,
   hasUserAccess,
   register,
+
+  // playlists
+  getMyPlaylists,
+  createPlaylist,
+  getPlaylistById,
+  addSongToPlaylist,
+  removeSongFromPlaylist,
+  deletePlaylist,
+  getSongsAndArtists,
 };
 
 export default facade;
