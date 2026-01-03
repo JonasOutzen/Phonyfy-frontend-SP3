@@ -13,6 +13,11 @@ export default function Songs({ songs, artists = [] }) {
     );
   };
 
+  const playOnSpotify = (artistName, songName) => {
+    const query = `${artistName} ${songName}`;
+    window.open(`https://open.spotify.com/search/${encodeURIComponent(query)}`, '_blank');
+  };
+
   return (
     <div>
       <table className={styles.table}>
@@ -24,13 +29,19 @@ export default function Songs({ songs, artists = [] }) {
             <th>Artist</th>
             <th>Featuring Artists</th>
             <th>Duration</th>
+            <th>Play</th>
           </tr>
         </thead>
         <tbody className={styles.tbody}>
           {songs.map((song, index) => (
             <tr key={song.id}>
               <td>{index + 1}</td>
-              <td>{song.songname}</td>
+              <td 
+                className={styles.songTitle}
+                onClick={() => playOnSpotify(artistNameFromId(song.artist), song.songname)}
+              >
+                {song.songname}
+              </td>
               <td>{song.albumname}</td>
               <td>
                 <Link className={styles.artistLink} to={`/artist/${song.artist}`}>
@@ -44,6 +55,15 @@ export default function Songs({ songs, artists = [] }) {
                 </Link>
               </td>
               <td>{formatDuration(song.duration)}</td>
+              <td>
+                <button 
+                  className={styles.playButton}
+                  onClick={() => playOnSpotify(artistNameFromId(song.artist), song.songname)}
+                  title="Play on Spotify"
+                >
+                  ▶
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
