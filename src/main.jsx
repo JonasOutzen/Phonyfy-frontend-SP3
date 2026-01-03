@@ -10,6 +10,8 @@ import ArtistDetails from "./pages/artistdetails/ArtistDetails.jsx";
 import Login from "./pages/login/Login.jsx";
 import RegisterUser from "./pages/register-user/RegisterUser.jsx";
 import "./index.css";
+import MyPlaylists from "./pages/my-playlists/MyPlaylists.jsx";
+import PlaylistDetails from "./pages/playlist-details/PlaylistDetails.jsx";
 
 const root = document.getElementById("root");
 
@@ -24,6 +26,8 @@ ReactDOM.createRoot(root).render(
         <Route path="globaltop50" element={<GlobalTop50 />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<RegisterUser />} />
+        <Route path="myplaylists" element={<MyPlaylists />} />
+        <Route path="playlist/:playlistId" element={<PlaylistDetails />} />
       </Route>
     </Routes>
   </BrowserRouter>

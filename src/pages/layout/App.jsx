@@ -1,14 +1,16 @@
 import Header from "../../components/header/Header.jsx";
 import "./App.css";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import Footer from "../../components/footer/Footer.jsx";
 import { useState, useEffect } from "react";
 import facade from "../../utils/apiFacade.js";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [roles, setRoles] = useState([]);
+  const location = useLocation();
 
 const refreshAuth = () => {
   const isLoggedIn = facade.loggedIn();
@@ -24,9 +26,11 @@ const refreshAuth = () => {
   }
 };
 
-  useEffect(() => {
-    refreshAuth();
-  }, []);
+
+useEffect(() => {
+  refreshAuth();
+}, [location.pathname]);
+
 
 
  const logout = () => {
@@ -47,13 +51,14 @@ const refreshAuth = () => {
           { title: "Songs", url: "/songs" },
           { title: "Artists", url: "/artists" },
           { title: "Global Top 50", url: "/globaltop50" },
+          { title: "My Playlists", url: "/myplaylists" },
         ]}
         loggedIn={loggedIn}
         username={username}
         roles={roles}
         onLogout={logout}
       />
-      <Outlet context={{ loggedIn, login, logout, refreshAuth }} />
+      <Outlet context={{ loggedIn, username, roles, login, logout, refreshAuth }} />
       <Footer />
     </>
   );
