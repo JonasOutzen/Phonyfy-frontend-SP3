@@ -3,6 +3,7 @@ import { useNavigate, useOutletContext, useParams, Link } from "react-router";
 import styles from "./PlaylistDetails.module.css";
 import facade from "../../utils/apiFacade.js";
 import { formatDuration } from "../../utils/playlistUtils.js";
+import tableStyles from "../../components/songs/SongList.module.css";
 
 export default function PlaylistDetails() {
   // Hooks
@@ -21,6 +22,14 @@ export default function PlaylistDetails() {
   const [deleting, setDeleting] = useState(false);
 
   const idNum = Number(playlistId);
+
+  const playOnSpotify = (artistName, songName) => {
+    const query = `${artistName} ${songName}`;
+    window.open(
+      `https://open.spotify.com/search/${encodeURIComponent(query)}`,
+      "_blank"
+    );
+  };
 
   // Load data
   const load = async () => {
@@ -183,8 +192,8 @@ export default function PlaylistDetails() {
       {songIds.length === 0 ? (
         <p className={styles.empty}>No songs in this playlist yet.</p>
       ) : (
-        <table className={styles.table}>
-          <thead className={styles.thead}>
+        <table className={tableStyles.table}>
+          <thead className={tableStyles.thead}>
             <tr>
               <th>#</th>
               <th>Title</th>
@@ -192,10 +201,11 @@ export default function PlaylistDetails() {
               <th>Artist</th>
               <th>Featuring</th>
               <th>Duration</th>
+              <th>Play</th>
               <th></th>
             </tr>
           </thead>
-          <tbody className={styles.tbody}>
+          <tbody className={tableStyles.tbody}>
             {songIds.map((sid, index) => {
               const song = songById.get(Number(sid));
               if (!song) {
@@ -232,6 +242,22 @@ export default function PlaylistDetails() {
                       .join(", ") || "-"}
                   </td>
                   <td>{formatDuration(song.duration)}</td>
+                  <td>
+                    <button
+                      className={tableStyles.playButton}
+                      onClick={() =>
+                        playOnSpotify(
+                          artistNameFromId(song.artist),
+                          song.songname
+                        )
+                      }
+                      title="Play on Spotify"
+                      type="button"
+                    >
+                      ▶
+                    </button>
+                  </td>
+
                   <td>
                     <button
                       className={styles.removeBtn}
