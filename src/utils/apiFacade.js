@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:7070/api";
+const BASE_URL = "https://frontendexam.outzenprogramming.dk/api";
 const LOGIN_ENDPOINT = "/auth/login";
 const REGISTER_ENDPOINT = "/auth/register";
 const SONGS_ENDPOINT = "/songs";
